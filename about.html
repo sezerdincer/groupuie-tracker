@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Information</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="container">
+       
+        {{ with .Artist }}
+        <h1>Artist Information</h1>
+            <div class="group-container">
+                <img src="{{.Image}}" alt="{{.Name}}" class="img-fluid">
+                <h2>{{.Name}}</h2>
+                <p><strong>Members:</strong> {{ range .Members }}{{ . }}, {{ end }}</p>
+                <p><strong>Creation Date:</strong> {{.CreationDate}}</p>
+                <p><strong>First Album:</strong> {{.FirstAlbum}}</p>
+            </div>
+        {{ end }}
+        <div id="bar">
+        {{ with .Location }}
+            
+            <div id="right" class="group-container">
+                <h1>Locations</h1>
+                <p><strong>Locations:</strong> {{ range .Locations }}{{ . }}, {{ end }}</p>
+            </div>
+        {{ end }}
+
+        {{ with .Date }}
+           
+            <div id="right"  class="group-container">
+                <h1>Concert Dates</h1>
+                <p><strong>Dates:</strong> {{ range .Date }}{{ . }}, {{ end }}</p>
+            </div>
+        {{ end }}
+
+        {{ with .Relation }}
+            
+            <div  class="group-container">
+                <h1>Relations</h1>
+                {{ range $key, $value := .DatesLocations }}
+                    <p><strong>{{ $key }}:</strong> {{ range $value }}{{ . }}, {{ end }}</p>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</body>
+</html>

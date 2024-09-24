@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Information</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+
+<body>
+    <div id="hero">
+        <video autoplay loop muted class="videoB">
+            <source src="static/video.mp4" type="video/mp4">
+            </source>
+        </video>
+
+        <div id="content">
+            <div>
+                <h1>Group Information</h1>
+            </div>
+            <form>
+                <input type="text" name="Search" placeholder="Search...">
+                <button type="submit">Search</button>
+            </form>
+            {{ range .Artists }} <!-- Go şablon dilinde döngü başlatma işlemi. -->
+            <div class="group-container"> <!-- Bir grup bilgisini içeren bir konteyneri temsil eder. -->
+                <div class="box">
+                    <img src="{{.Image}}" alt="{{.Name}}"> <!-- Resim etiketi, grup resmini gösterir. -->
+                    <p><a class="btn btn-danger" href="/about?id={{.ID}}" role="button" target="_blank">More
+                            Information</a>
+                    </p>
+                </div>
+            </div>        
+            {{end}}
+        </div>
+    </div>
+</body>
+
+</html>
